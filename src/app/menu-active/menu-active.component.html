@@ -1,0 +1,501 @@
+<div class="app">
+    <div class="app-sidebar">
+        <header>
+            <h1 class="app-sidebar__title">Japanese Alphabet</h1>
+        </header>
+        <div class="app-sidebar__widget">
+            <div class="app-field">
+                <label class="app-field__label">Main Alphabet</label>
+            </div>
+        </div>
+        <select [(ngModel)]="alphabet" class="app-field__select">
+            <option *ngFor="let option of options" [value]="option">{{option}}</option>
+        </select>
+
+        <button class="btn-train" [disabled]="status" (click)="clickTrain()">Start train</button>
+
+        <div class="app-trainmenu">
+            <h3>Choose level to train:</h3>
+            <div (click)="onClickLevel('1')" [ngClass]="{'level-active': level1}">
+                <span>Training with single word</span>
+            </div>
+            <div (click)="onClickLevel('2')" [ngClass]="{'level-active': level2}">
+                <span>Training with multiple words</span>
+            </div>
+            <div (click)="onClickLevel('3')" [ngClass]="{'level-active': level3}">
+                <span>Training hard</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="app-page">
+        <div class="app-page__content">
+            <table>
+                <tr>
+                    <th class="app-table__header" (click)="clickAllLetters()">All</th>
+                    <th class="app-table__header" (click)="clickRow('a')">A</th>
+                    <th class="app-table__header" (click)="clickRow('i')">I</th>
+                    <th class="app-table__header" (click)="clickRow('u')">U</th>
+                    <th class="app-table__header" (click)="clickRow('e')">E</th>
+                    <th class="app-table__header" (click)="clickRow('o')">O</th>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('vowel')">Vowels</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.a)"
+                            [ngClass]="{'highlight': letters.a.active}">
+                            <span class="app-letter__main">{{letters.a[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.a.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.i)"
+                            [ngClass]="{'highlight': letters.i.active}">
+                            <span class="app-letter__main">{{letters.i[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.i.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.u)"
+                            [ngClass]="{'highlight': letters.u.active}">
+                            <span class="app-letter__main">{{letters.u[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.u.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.e)"
+                            [ngClass]="{'highlight': letters.e.active}">
+                            <span class="app-letter__main">{{letters.e[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.e.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.o)"
+                            [ngClass]="{'highlight': letters.o.active}">
+                            <span class="app-letter__main">{{letters.o[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.o.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('k')">K</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ka)"
+                            [ngClass]="{'highlight': letters.ka.active}">
+                            <span class="app-letter__main">{{letters.ka[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ka.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ki)"
+                            [ngClass]="{'highlight': letters.ki.active}">
+                            <span class="app-letter__main">{{letters.ki[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ki.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ku)"
+                            [ngClass]="{'highlight': letters.ku.active}">
+                            <span class="app-letter__main">{{letters.ku[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ku.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ke)"
+                            [ngClass]="{'highlight': letters.ke.active}">
+                            <span class="app-letter__main">{{letters.ke[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ke.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ko)"
+                            [ngClass]="{'highlight': letters.ko.active}">
+                            <span class="app-letter__main">{{letters.ko[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ko.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('s')">S</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.sa)"
+                            [ngClass]="{'highlight': letters.sa.active}">
+                            <span class="app-letter__main">{{letters.sa[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.sa.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.shi)"
+                            [ngClass]="{'highlight': letters.shi.active}">
+                            <span class="app-letter__main">{{letters.shi[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.shi.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.su)"
+                            [ngClass]="{'highlight': letters.su.active}">
+                            <span class="app-letter__main">{{letters.su[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.su.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.se)"
+                            [ngClass]="{'highlight': letters.se.active}">
+                            <span class="app-letter__main">{{letters.se[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.se.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.so)"
+                            [ngClass]="{'highlight': letters.so.active}">
+                            <span class="app-letter__main">{{letters.so[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.so.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('t')">T</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ta)"
+                            [ngClass]="{'highlight': letters.ta.active}">
+                            <span class="app-letter__main">{{letters.ta[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ta.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.chi)"
+                            [ngClass]="{'highlight': letters.chi.active}">
+                            <span class="app-letter__main">{{letters.chi[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.chi.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.tsu)"
+                            [ngClass]="{'highlight': letters.tsu.active}">
+                            <span class="app-letter__main">{{letters.tsu[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.tsu.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.te)"
+                            [ngClass]="{'highlight': letters.te.active}">
+                            <span class="app-letter__main">{{letters.te[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.te.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.to)"
+                            [ngClass]="{'highlight': letters.to.active}">
+                            <span class="app-letter__main">{{letters.to[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.to.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('n')">N</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.na)"
+                            [ngClass]="{'highlight': letters.na.active}">
+                            <span class="app-letter__main">{{letters.na[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.na.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ni)"
+                            [ngClass]="{'highlight': letters.ni.active}">
+                            <span class="app-letter__main">{{letters.ni[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ni.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.nu)"
+                            [ngClass]="{'highlight': letters.nu.active}">
+                            <span class="app-letter__main">{{letters.nu[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.nu.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ne)"
+                            [ngClass]="{'highlight': letters.ne.active}">
+                            <span class="app-letter__main">{{letters.ne[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ne.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.no)"
+                            [ngClass]="{'highlight': letters.no.active}">
+                            <span class="app-letter__main">{{letters.no[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.no.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('h')">H</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ha)"
+                            [ngClass]="{'highlight': letters.ha.active}">
+                            <span class="app-letter__main">{{letters.ha[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ha.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.hi)"
+                            [ngClass]="{'highlight': letters.hi.active}">
+                            <span class="app-letter__main">{{letters.hi[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.hi.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.fu)"
+                            [ngClass]="{'highlight': letters.fu.active}">
+                            <span class="app-letter__main">{{letters.fu[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.fu.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.he)"
+                            [ngClass]="{'highlight': letters.he.active}">
+                            <span class="app-letter__main">{{letters.he[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.he.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ho)"
+                            [ngClass]="{'highlight': letters.ho.active}">
+                            <span class="app-letter__main">{{letters.ho[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ho.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('m')">M</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ma)"
+                            [ngClass]="{'highlight': letters.ma.active}">
+                            <span class="app-letter__main">{{letters.ma[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ma.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.mi)"
+                            [ngClass]="{'highlight': letters.mi.active}">
+                            <span class="app-letter__main">{{letters.mi[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.mi.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.mu)"
+                            [ngClass]="{'highlight': letters.mu.active}">
+                            <span class="app-letter__main">{{letters.mu[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.mu.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.me)"
+                            [ngClass]="{'highlight': letters.me.active}">
+                            <span class="app-letter__main">{{letters.me[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.me.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.mo)"
+                            [ngClass]="{'highlight': letters.mo.active}">
+                            <span class="app-letter__main">{{letters.mo[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.mo.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('y')">Y</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ya)"
+                            [ngClass]="{'highlight': letters.ya.active}">
+                            <span class="app-letter__main">{{letters.ya[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ya.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td></td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.yu)"
+                            [ngClass]="{'highlight': letters.yu.active}">
+                            <span class="app-letter__main">{{letters.yu[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.yu.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td></td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.yo)"
+                            [ngClass]="{'highlight': letters.yo.active}">
+                            <span class="app-letter__main">{{letters.yo[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.yo.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('r')">R</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ra)"
+                            [ngClass]="{'highlight': letters.ra.active}">
+                            <span class="app-letter__main">{{letters.ra[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ra.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ri)"
+                            [ngClass]="{'highlight': letters.ri.active}">
+                            <span class="app-letter__main">{{letters.ri[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ri.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ru)"
+                            [ngClass]="{'highlight': letters.ru.active}">
+                            <span class="app-letter__main">{{letters.ru[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ru.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.re)"
+                            [ngClass]="{'highlight': letters.re.active}">
+                            <span class="app-letter__main">{{letters.re[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.re.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.ro)"
+                            [ngClass]="{'highlight': letters.ro.active}">
+                            <span class="app-letter__main">{{letters.ro[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.ro.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('w')">W</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.wa)"
+                            [ngClass]="{'highlight': letters.wa.active}">
+                            <span class="app-letter__main">{{letters.wa[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.wa.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.wo)"
+                            [ngClass]="{'highlight': letters.wo.active}">
+                            <span class="app-letter__main">{{letters.wo[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.wo.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="app-table__header" (click)="clickColumn('')">•</th>
+                    <td>
+                        <article class="app-letter" (click)="clickletter(letters.nm)"
+                            [ngClass]="{'highlight': letters.nm.active}">
+                            <span class="app-letter__main">{{letters.nm[alphabet]}}</span>
+                            <footer class="app-letter__footer">
+                                <span>{{letters.nm.romaji}}</span>
+                            </footer>
+                        </article>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
