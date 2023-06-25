@@ -21,7 +21,7 @@ export const letters = {
         consonant: 'w',
         katakana: 'ヲ',
         vowel: 'o',
-        romaji: 'o',
+        romaji: 'wo',
         hiragana: 'を',
         isactive: false,
     },
