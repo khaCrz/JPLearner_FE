@@ -8,13 +8,22 @@
                 <label class="app-field__label">Main Alphabet</label>
             </div>
         </div>
-        <select [(ngModel)]="alphabet" class="app-field__select">
+        <select [disabled]="isTraning" [(ngModel)]="alphabet" class="app-field__select"
+            [ngClass]="{'not-active': isTraning}">
             <option *ngFor="let option of options" [value]="option">{{option}}</option>
         </select>
 
-        <button class="btn-train" [disabled]="status" (click)="clickTrain()">Start train</button>
+        <button class="btn-train" [disabled]="status" (click)="clickTrain()">
+            <ng-container *ngIf="isTraning; else elseNotDone">
+                Stop training
+            </ng-container>
+            <ng-template #elseNotDone>
+                Start train
+            </ng-template>
+        </button>
 
-        <div class="app-trainmenu">
+
+        <div class="app-trainmenu" [ngClass]="{'not-pointer': isTraning}">
             <h3>Choose level to train:</h3>
             <div (click)="onClickLevel('1')" [ngClass]="{'level-active': level1}">
                 <span>Training with single word</span>
@@ -30,7 +39,7 @@
     </div>
     <div class="app-page">
         <div class="app-page__content">
-            <table>
+            <table [ngClass]="{'not-active blur': isTraning}">
                 <tr>
                     <th class="app-table__header" (click)="clickAllLetters()">All</th>
                     <th class="app-table__header" (click)="clickRow('a')">A</th>
@@ -480,7 +489,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="app-table__header" (click)="clickColumn('')">•</th>
+                    <th class="app-table__header" (click)="clickColumn('nm')">•</th>
                     <td>
                         <article class="app-letter" (click)="clickletter(letters.nm)"
                             [ngClass]="{'highlight': letters.nm.active}">

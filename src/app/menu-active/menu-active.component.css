@@ -37,6 +37,8 @@
     border: none;
     color: rgba(255, 255, 255, 0.692);
     font-size: 16px;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .app-field__option:active {
@@ -58,6 +60,21 @@
     transition: background-color 0.2s ease, color 0.2s ease;
     -ms-user-select: none;
     user-select: none;
+
+}
+
+.not-active {
+    cursor: not-allowed;
+}
+
+.not-pointer {
+    pointer-events: none;
+}
+
+
+.blur {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
 }
 
 .app-letter__main {
@@ -112,9 +129,8 @@
 
 
 .app-trainmenu div {
-    border: none;
-    margin-bottom: 40px;
-    border-bottom: #3d4698 2px solid;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3d4698;
     padding: 20px 10px;
     cursor: pointer;
     transition: all 0.4s ease;
@@ -125,8 +141,8 @@
 .app-trainmenu div:hover {
     border: none;
     background: #4356d6;
-    border-radius: 6px;
     color: white;
+    border-radius: 6px;
 }
 
 .level-active {
@@ -134,6 +150,7 @@
     background: #4356d6;
     border-radius: 6px;
     color: white;
+
 }
 
 .btn-train {
@@ -192,5 +209,3 @@
         height: 65px;
     }
 }
-
-
