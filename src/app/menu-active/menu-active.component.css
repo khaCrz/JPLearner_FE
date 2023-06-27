@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     height: 100%;
-
 }
 
 .app-sidebar {
@@ -87,8 +86,14 @@
 
 .app-page {
     flex: 1;
-    padding: 1em 2em;
-    max-width: 1020px;
+    padding: 1em 0em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.app-page__content {
+    padding: 0em 1em;
 }
 
 .app-page__content table td {
@@ -147,3 +152,45 @@
     background: #4357d67d;
     cursor: not-allowed;
 }
+
+.app-train {
+    border: 1px white solid;
+    margin: 0.1em 0em;
+    padding: 0 1em;
+    height: 70%;
+    width: 100%;
+
+}
+
+@media screen and (max-width: 1280px) {
+    .app {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .app-page {
+        flex-direction: column;
+    }
+
+    .app-page__content {
+        padding: 0em 0em;
+    }
+}
+
+@media screen and (max-width: 555px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .app-page__content {
+        width: 80%;
+    }
+
+    .app-letter {
+        width: 55px;
+        height: 65px;
+    }
+}
+
+

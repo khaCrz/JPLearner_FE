@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { UserActiveComponent } from './user-active/user-active.component';
 import { MenuActiveComponent } from './menu-active/menu-active.component';
 import { FormsModule } from '@angular/forms';
+import { TrainActiveComponent } from './train-active/train-active.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserActiveComponent,
-    MenuActiveComponent
+    MenuActiveComponent,
+    TrainActiveComponent
   ],
   imports: [
     BrowserModule,
