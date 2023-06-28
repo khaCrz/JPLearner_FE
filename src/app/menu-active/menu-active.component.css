@@ -2,14 +2,15 @@
     display: flex;
     flex-direction: row;
     height: 100%;
+    margin-top: 25px;
 }
 
 .app-sidebar {
     display: flex;
     flex-direction: column;
     background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
-    margin: 1em 0em;
     padding: 0em 2em;
+    border-radius: 6px;
 }
 
 .app-sidebar__title {
@@ -103,7 +104,6 @@
 
 .app-page {
     flex: 1;
-    padding: 1em 0em;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -111,7 +111,21 @@
 
 .app-page__content {
     padding: 0em 1em;
+    border-radius: 6px;
 }
+
+.row-header th:first-child {
+    border-radius: 6px 0 0 0;
+}
+
+.row-header th:last-child {
+    border-radius: 0 6px 0 0;
+}
+
+#letters-last {
+    border-radius: 0 0 0 6px;
+}
+
 
 .app-page__content table td {
     border: none;
@@ -119,8 +133,7 @@
 
 /* -------------------------- */
 .app-trainmenu {
-
-    padding: 20px 0px;
+    border-radius: 6px;
 }
 
 .app-trainmenu span {
@@ -171,12 +184,11 @@
 }
 
 .app-train {
-    border: 1px white solid;
     margin: 0.1em 0em;
-    padding: 0 1em;
+    /* padding: 0 1em; */
     height: 70%;
     width: 100%;
-
+    border-radius: 6px;
 }
 
 @media screen and (max-width: 1280px) {

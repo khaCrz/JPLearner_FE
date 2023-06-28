@@ -1,2 +1,14 @@
-<p>train-active works!</p>
-<div>123</div>
+<div class="train" (click)="onClickLetter()">
+    <p class="train-title">Let's training</p>
+    <div class="train-letter">
+        {{letterShow}}
+    </div>
+    <div class="alphabet-type">
+        <p>(hiragana)</p>
+    </div>
+
+    <div *ngIf="isShowAnswer" class="train-answer">
+        {{letterAnswer}}
+    </div>
+
+</div>

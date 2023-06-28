@@ -40,7 +40,7 @@
     <div class="app-page">
         <div class="app-page__content">
             <table [ngClass]="{'not-active blur': isTraning}">
-                <tr>
+                <tr class="row-header">
                     <th class="app-table__header" (click)="clickAllLetters()">All</th>
                     <th class="app-table__header" (click)="clickRow('a')">A</th>
                     <th class="app-table__header" (click)="clickRow('i')">I</th>
@@ -489,7 +489,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="app-table__header" (click)="clickColumn('nm')">•</th>
+                    <th id="letters-last" class="app-table__header" (click)="clickColumn('nm')">•</th>
                     <td>
                         <article class="app-letter" (click)="clickletter(letters.nm)"
                             [ngClass]="{'highlight': letters.nm.active}">
@@ -506,8 +506,8 @@
                 </tr>
             </table>
         </div>
-        <div class="app-train">
-            <app-train-active></app-train-active>
+        <div class="app-train" *ngIf="isTraning">
+            <app-train-active [listLetters]="listLetterChoose"></app-train-active>
         </div>
     </div>
 

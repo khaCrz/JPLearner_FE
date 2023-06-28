@@ -9,15 +9,17 @@ import { Output, EventEmitter } from '@angular/core';
 })
 
 export class MenuActiveComponent implements DoCheck {
+  //store all letters
   letters: any = letters
+  //to check if all letters are choosen
   isAll: boolean = false;
-
+  //to check if one column of letters are choosen
   isAlla: boolean = false;
   isAlli: boolean = false;
   isAllu: boolean = false;
   isAlle: boolean = false;
   isAllo: boolean = false;
-
+  //to check if one row of letters are choosen
   isAllvowel: boolean = false;
   isAllk: boolean = false;
   isAlls: boolean = false;
@@ -29,25 +31,33 @@ export class MenuActiveComponent implements DoCheck {
   isAllr: boolean = false;
   isAllw: boolean = false;
   isAllnm: boolean = false;
-
-
+  // to check if is training
   train: boolean = false;
   isTraning = false;
-
-  level1: boolean = false;
+  // to check for choosing level
+  level1: boolean = true;
   level2: boolean = false;
   level3: boolean = false;
 
+  // to check for disable option train, swap alphabetic and blur mode for table letters
   status: boolean = true;
   selectedOption: string;
-
+  // default alphabetic
   alphabet: string = 'hiragana'
-
+  // all options
   options = ['hiragana', 'katakana'];
+
+  // save data for training
+  listLetterChoose = []
 
   constructor() {
   }
 
+
+  /*
+  * Event handlers when dom is changed
+  * @author Kha
+  */
   ngDoCheck(): void {
     this.status = true
     if (this.level1 || this.level2 || this.level3) {
@@ -59,11 +69,19 @@ export class MenuActiveComponent implements DoCheck {
     }
   }
 
+  /*
+  * Event handlers click for swap Alphabet between hiragana and katakana
+  * @author Kha
+  */
   onClickAlphabetic(value) {
     alert('123')
     this.alphabet = value
   }
 
+  /*
+  * Event handlers click to choose a level for train component
+  * @author Kha
+  */
   onClickLevel(num) {
     this.level1 = false;
     this.level2 = false;
@@ -76,14 +94,36 @@ export class MenuActiveComponent implements DoCheck {
     }
   }
 
+  /*
+  * Event handlers click button "Start train"
+  * Display a component training
+  * @author Kha
+  */
   clickTrain() {
     this.isTraning = !this.isTraning;
+    if (!this.isTraning) {
+      this.listLetterChoose = []
+    } else {
+      this.listLetterChoose = []
+      for (let letter in this.letters) {
+        if (this.letters[letter].active)
+          this.listLetterChoose.push(this.letters[letter])
+      }
+    }
   }
 
+  /*
+  * Event handlers click on one letter on table
+  * @author Kha
+  */
   clickletter(letter) {
     letter.active = !letter.active
   }
 
+  /*
+  * Event handlers click choose all letters on table
+  * @author Kha
+  */
   clickAllLetters() {
     this.isAll = !this.isAll
     for (let letter in this.letters) {
@@ -91,6 +131,10 @@ export class MenuActiveComponent implements DoCheck {
     }
   }
 
+  /*
+  * Event handlers click one row on table
+  * @author Kha
+  */
   clickRow(rowname) {
     switch (rowname) {
       case 'a': {
@@ -139,9 +183,12 @@ export class MenuActiveComponent implements DoCheck {
         break
       }
     }
-
   }
 
+  /*
+  * Event handlers click one column on table
+  * @author Kha
+  */
   clickColumn(columnname) {
     switch (columnname) {
       case 'vowel': {
@@ -240,8 +287,6 @@ export class MenuActiveComponent implements DoCheck {
         break
       }
     }
-
-
-
   }
+
 }

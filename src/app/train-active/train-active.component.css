@@ -1,0 +1,39 @@
+.train-title {
+    text-align: center;
+    font-size: 23px;
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ffffff76;
+    width: 30%;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.train {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #131630;
+    height: 100%;
+    border-radius: 6px;
+}
+
+.train-letter {
+    font-size: 180px;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all 0.4s ease-in;
+}
+
+.alphabet-type {
+    font-size: 20px;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.train-answer {
+    font-size: 60px;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all 0.4s ease-in;
+}
