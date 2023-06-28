@@ -36,6 +36,35 @@
             </div>
         </div>
 
+        <ng-container *ngIf="level2">
+            <div class="options">
+                <div class="option-title">
+                    <h3>Options:</h3>
+                </div>
+                <div class="option-content">
+                    <div class="mode1" [ngClass]="{'not-active': isTraning}">
+                        <div class="repeat">
+                            <p>Number of repeat</p>
+                            <div class="mode1-repeat">
+                                <input [(ngModel)]="numOfRep" name="repeat" class="range-slider__range" type="range"
+                                    value={{numOfRep}} min="1" max="30" [disabled]="isTraning">
+                                <label for="repeat">{{numOfRep}}</label>
+                            </div>
+                        </div>
+                        <div class="sentences">
+                            <p>Number of letter in 1 sentences</p>
+                            <div class="mode1-sentence">
+                                <input [(ngModel)]="numOfSen" name="sentence" class="range-slider__range" type="range"
+                                    value={{numOfSen}} min="3" max="30" [disabled]="isTraning">
+                                <label for="sentence">{{numOfSen}}</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </ng-container>
     </div>
     <div class="app-page">
         <div class="app-page__content">
@@ -506,8 +535,21 @@
                 </tr>
             </table>
         </div>
-        <div class="app-train" *ngIf="isTraning">
-            <app-train-active [listLetters]="listLetterChoose"></app-train-active>
+        <div class="app-train" *ngIf="true">
+            <ng-container *ngIf="level1 === true;else second">
+                <app-train-m1 [listLetters]="listLetterChoose" [typeAlphabetic]="alphabet">
+                </app-train-m1>
+            </ng-container>
+            <ng-template #second>
+                <ng-container *ngIf="level2 === true;else third">
+                    <app-train-m2 [listLetters]="listLetterChoose" [numOfSen]="numOfSen" [numOfRep]="numOfRep">
+                    </app-train-m2>
+                </ng-container>
+            </ng-template>
+            <ng-template #third>
+                <app-train-m3 [listLetters]="listLetterChoose"></app-train-m3>
+            </ng-template>
+
         </div>
     </div>
 

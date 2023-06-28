@@ -1,13 +1,14 @@
 import { Component, DoCheck, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-train-active',
-  templateUrl: './train-active.component.html',
-  styleUrls: ['./train-active.component.css']
+  selector: 'app-train-m1',
+  templateUrl: './train-m1.component.html',
+  styleUrls: ['./train-m1.component.css']
 })
-export class TrainActiveComponent {
+export class TrainM1Component {
   //data get from parent component
   @Input() listLetters: any[] = [];
+  @Input() typeAlphabetic: string = '';
 
   isShowAnswer: boolean = true;
   // letter to display
@@ -27,7 +28,7 @@ export class TrainActiveComponent {
       do {
         this.randomPosition = Math.floor(Math.random() * this.listLetters.length);
       } while (this.randomPosition === i);
-      this.letterShow = this.listLetters.length > 0 ? this.listLetters[this.randomPosition]['hiragana'] : ''
+      this.letterShow = this.listLetters.length > 0 ? this.listLetters[this.randomPosition][this.typeAlphabetic] : ''
       this.isShowAnswer = false;
     } else {
       this.isShowAnswer = true;

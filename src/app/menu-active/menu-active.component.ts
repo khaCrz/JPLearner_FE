@@ -35,8 +35,8 @@ export class MenuActiveComponent implements DoCheck {
   train: boolean = false;
   isTraning = false;
   // to check for choosing level
-  level1: boolean = true;
-  level2: boolean = false;
+  level1: boolean = false;
+  level2: boolean = true;
   level3: boolean = false;
 
   // to check for disable option train, swap alphabetic and blur mode for table letters
@@ -49,6 +49,11 @@ export class MenuActiveComponent implements DoCheck {
 
   // save data for training
   listLetterChoose = []
+
+  //data for training mode 2
+  numOfSen = 8;
+  numOfRep = 10;
+
 
   constructor() {
   }

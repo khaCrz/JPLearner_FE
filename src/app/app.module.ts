@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { UserActiveComponent } from './user-active/user-active.component';
 import { MenuActiveComponent } from './menu-active/menu-active.component';
 import { FormsModule } from '@angular/forms';
-import { TrainActiveComponent } from './train-active/train-active.component';
+import { TrainM1Component } from './event-components/train-mode-1/train-m1.component';
+import { TrainM2Component } from './event-components/train-mode-2/train-m2/train-m2.component';
+import { TrainM3Component } from './event-components/train-mode-3/train-m3/train-m3.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserActiveComponent,
     MenuActiveComponent,
-    TrainActiveComponent
+    TrainM1Component,
+    TrainM2Component,
+    TrainM3Component
   ],
   imports: [
     BrowserModule,
