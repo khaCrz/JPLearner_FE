@@ -6,15 +6,21 @@ import { Component, DoCheck, Input, OnInit } from '@angular/core';
   styleUrls: ['./train-active.component.css']
 })
 export class TrainActiveComponent {
-
+  //data get from parent component
   @Input() listLetters: any[] = [];
-  trainIndex: number = 0;
+
   isShowAnswer: boolean = true;
+  // letter to display
   letterShow = 'click';
+  // answer to display
   letterAnswer = '';
+  // random position letters
   randomPosition = 0
 
-
+  /*
+  * Event handlers click letter to show answer
+  * @author Kha
+  */
   onClickLetter() {
     if (this.isShowAnswer) {
       let i = this.randomPosition
