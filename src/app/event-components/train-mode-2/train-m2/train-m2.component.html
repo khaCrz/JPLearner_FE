@@ -1,5 +1,17 @@
 <div class="train-2">
     <div class="train2-title">Let's training</div>
+    <div class="train2-content">
+        <div class="sentence">
+            <span *ngFor="let word of sentenses"
+                [ngClass]="{'normal': word.status === 'none', 'correct' : word.status === 'true', 'incorrect' : word.status === 'false' }">
+                {{word.letter}} </span>
+        </div>
+        <div class="input-romaji">
+            <label for="romaji">Answer</label>
+            <input name="romaji" type="text" #s (input)="onInputChanged(s.value)">
+        </div>
+    </div>
+
     <ul class="rules">
         <li>
             We'll randomly shuffle the letters you chosen in hiragana alphabet into 1 long sentence.
@@ -8,7 +20,7 @@
             You need to write a similar sentence in romaji type.
         </li>
         <li>
-            You must write a romaji sentence with space-separated romaji letters.
+            You must write a romaji sentence with space-separated between romaji letters.
         </li>
     </ul>
 </div>

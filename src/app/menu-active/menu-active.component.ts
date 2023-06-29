@@ -74,14 +74,6 @@ export class MenuActiveComponent implements DoCheck {
     }
   }
 
-  /*
-  * Event handlers click for swap Alphabet between hiragana and katakana
-  * @author Kha
-  */
-  onClickAlphabetic(value) {
-    alert('123')
-    this.alphabet = value
-  }
 
   /*
   * Event handlers click to choose a level for train component

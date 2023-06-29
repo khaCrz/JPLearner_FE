@@ -1,0 +1,35 @@
+.sentence {
+    font-size: 30px;
+    color: #b6acac;
+}
+
+.normal {
+    color: #b6acac;
+}
+
+.correct {
+    color: #17a98a;
+}
+
+.incorrect {
+    color: #e85471;
+}
+
+.input-romaji {
+    margin-top: 40px;
+}
+
+.input-romaji label {
+    font-size: 20px;
+}
+
+.input-romaji input {
+    border: none;
+    background: transparent;
+    color: #d6c9c9;
+    font-size: 25px;
+    border-bottom: 2px solid #ffffff5d;
+    padding: 10px 10px;
+    width: 100%;
+    margin: 20px 0px;
+}
