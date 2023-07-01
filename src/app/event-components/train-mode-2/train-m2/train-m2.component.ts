@@ -17,11 +17,13 @@ export class TrainM2Component implements OnInit {
   @Input() listLetters: any[] = [];
   @Input() typeAlphabetic: string = '';
   @Input() numOfSen: number = 0;
-  @Input() numOfRep: number = 0;
 
 
   //
   sentenses: LetterAnswer[] = [];
+  textAnswers: string = ''
+
+
   /*
   * Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
   * Add 'implements AfterViewInit' to the class.
@@ -33,6 +35,7 @@ export class TrainM2Component implements OnInit {
 
 
   generateSentence() {
+    this.sentenses = []
     while (this.sentenses.length < this.numOfSen) {
       const randomIndex = Math.floor(Math.random() * this.listLetters.length);
       this.sentenses.push({
@@ -44,25 +47,46 @@ export class TrainM2Component implements OnInit {
     }
   }
 
-  onInputChanged(value: string) {
-    value = value.replace(/\s\s+/g, ' ').trim()
-    console.log(value)
-    let listRomaji = value.split(' ')
-    if (value == '')
-      this.sentenses[0].status = 'none'
+  onInputChanged() {
+    if (this.textAnswers.charAt(this.textAnswers.length - 1) === ' ') {
+      let checkAll = true
+      if (this.sentenses.length == 0)
+        checkAll = false
 
-    if (listRomaji.length <= this.sentenses.length) {
-      for (let index = 0; index < listRomaji.length; index++) {
-        if (listRomaji[index] != '') {
-          if (this.sentenses[index].romaji === listRomaji[index]) {
-            this.sentenses[index].status = 'true'
-          } else {
-            this.sentenses[index].status = 'false'
-          }
+      for (let index = 0; index < this.sentenses.length; index++) {
+        if (this.sentenses[index].status === 'false' || this.sentenses[index].status === 'none') {
+          checkAll = false;
         }
       }
-      for (let index = listRomaji.length; index < this.sentenses.length; index++) {
-        this.sentenses[index].status = 'none'
+      if (checkAll) {
+        this.textAnswers = 'Correct !!!'
+        setTimeout(() => {
+          this.textAnswers = ''
+          this.generateSentence()
+        }, 1500)
+      }
+    }
+
+    if (!this.textAnswers.match(/Correct !!.+/g)) {
+      let text = this.textAnswers.replace(/\s\s+/g, ' ').trim()
+
+      let listRomaji = text.split(' ')
+      if (text == '')
+        this.sentenses[0].status = 'none'
+
+      if (listRomaji.length <= this.sentenses.length) {
+        for (let index = 0; index < listRomaji.length; index++) {
+          if (listRomaji[index] != '') {
+            if (this.sentenses[index].romaji === listRomaji[index]) {
+              this.sentenses[index].status = 'true'
+            } else {
+              this.sentenses[index].status = 'false'
+            }
+          }
+        }
+        for (let index = listRomaji.length; index < this.sentenses.length; index++) {
+          this.sentenses[index].status = 'none'
+        }
       }
     }
 

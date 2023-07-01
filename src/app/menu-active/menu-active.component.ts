@@ -51,8 +51,7 @@ export class MenuActiveComponent implements DoCheck {
   listLetterChoose = []
 
   //data for training mode 2
-  numOfSen = 8;
-  numOfRep = 10;
+  numOfSen = 5;
 
 
   constructor() {

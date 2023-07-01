@@ -1,5 +1,5 @@
 <div class="train-2">
-    <div class="train2-title">Let's training</div>
+    <p class="train2-title">Let's training</p>
     <div class="train2-content">
         <div class="sentence">
             <span *ngFor="let word of sentenses"
@@ -8,7 +8,7 @@
         </div>
         <div class="input-romaji">
             <label for="romaji">Answer</label>
-            <input name="romaji" type="text" #s (input)="onInputChanged(s.value)">
+            <input name="romaji" [(ngModel)]="textAnswers" type="text" (input)="onInputChanged()" [value]="textAnswers">
         </div>
     </div>
 
@@ -20,7 +20,10 @@
             You need to write a similar sentence in romaji type.
         </li>
         <li>
-            You must write a romaji sentence with space-separated between romaji letters.
+            You must write a romaji sentence with space-separated romaji letters.
+        </li>
+        <li style="color: #e85471; font-weight: 700;">
+            Add a space at the end of your answer to complete it. <sup>*</sup>
         </li>
     </ul>
 </div>

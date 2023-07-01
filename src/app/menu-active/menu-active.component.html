@@ -32,7 +32,7 @@
                 <span>Training with multiple words</span>
             </div>
             <div (click)="onClickLevel('3')" [ngClass]="{'level-active': level3}">
-                <span>Training hard</span>
+                <span>Training by writing</span>
             </div>
         </div>
 
@@ -43,14 +43,6 @@
                 </div>
                 <div class="option-content">
                     <div class="mode1" [ngClass]="{'not-active': isTraning}">
-                        <div class="repeat">
-                            <p>Number of repeat</p>
-                            <div class="mode1-repeat">
-                                <input [(ngModel)]="numOfRep" name="repeat" class="range-slider__range" type="range"
-                                    value={{numOfRep}} min="1" max="30" [disabled]="isTraning">
-                                <label for="repeat">{{numOfRep}}</label>
-                            </div>
-                        </div>
                         <div class="sentences">
                             <p>Number of letter in 1 sentences</p>
                             <div class="mode1-sentence">
@@ -542,8 +534,7 @@
             </ng-container>
             <ng-template #second>
                 <ng-container *ngIf="level2 === true;else third">
-                    <app-train-m2 [listLetters]="listLetterChoose" [typeAlphabetic]="alphabet" [numOfSen]="numOfSen"
-                        [numOfRep]="numOfRep">
+                    <app-train-m2 [listLetters]="listLetterChoose" [typeAlphabetic]="alphabet" [numOfSen]="numOfSen">
                     </app-train-m2>
                 </ng-container>
             </ng-template>
